@@ -1,23 +1,17 @@
-import React, { useState } from "react";
-import AddTodo from "./AddTodo";
+import TodoItem from './TodoItem';
 
-function TodoList() {
-  const [todos, setTodos] = useState([]);
-
-  const addTodo = (newTodo) => {
-    setTodos([...todos, newTodo]);
-  };
-
-  return (
-    <div>
-      <AddTodo onAddTodo={addTodo} />
-      <ul>
-        {todos.map((todo, index) => (
-          <li key={index}>{todo}</li>
-        ))}
-      </ul>
-    </div>
+export default function TodoList({ todoList, deleteTodo }) {
+  return todoList.length ? (
+    <ul>
+      {todoList.map((todo) => (
+        <TodoItem
+          key={todo.id}
+          todo={todo}
+          deleteTodo={() => deleteTodo(todo.id)}
+        />
+      ))}
+    </ul>
+  ) : (
+    <p>Aucune tâche en cours </p>
   );
 }
-
-export default TodoList;

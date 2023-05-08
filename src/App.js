@@ -1,12 +1,28 @@
-import "./styles.css";
-import AddTodo from "./elements/AddTodo.js";
-import Todolist from "./elements/Todolist.js";
+import { useState } from 'react';
+import TodoList from './elements/Todolist.js';
+import AddTodo from './elements/AddTodo.js';
 
-export default function App() {
+function App() {
+  const [todoList, setTodoList] = useState([]);
+
+  function addTodo(content) {
+    const todo = { id: crypto.randomUUID(), done: false, edit: false, content };
+    setTodoList([...todoList, todo]);
+  }
+
+  function deleteTodo(id) {
+    setTodoList(todoList.filter((todo) => todo.id !== id));
+  }
+
   return (
-    <div className="App">
-      <AddTodo />
-      <Todolist />
+    <div className="d-flex justify-content-center align-items-center p-20">
+      <div className="card container p-20">
+        <h1 className="mb-20">Liste de tâches</h1>
+        <AddTodo addTodo={addTodo} />
+        <TodoList todoList={todoList} deleteTodo={deleteTodo} />
+      </div>
     </div>
   );
 }
+
+export default App;
