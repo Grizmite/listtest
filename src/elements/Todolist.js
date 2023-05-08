@@ -1,8 +1,25 @@
+import React from "react";
+import { useState } from "react";
 
 function Todolist(){
     
+    const [inputValue, setInputValue] = useState('');
+    
+    const handleChange = (event) =>{
+        setInputValue(event.target.value);
+    };
+    
+    const handleClick = () =>{
+        console.log(inputValue);
+    };
+    
+    
+    
     return(
-            <h1>Hello There !</h1>
+            <div>
+                <input placeholder="Write something" value={inputValue} onChange={handleChange} />
+                <button onClick={handleClick}>Add</button>
+            </div>
 
     );
 }

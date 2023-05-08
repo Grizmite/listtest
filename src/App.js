@@ -1,6 +1,6 @@
 import "./styles.css";
-import Addtodo from "/src/elements/Addtodo.js";
-import Todolist from "/src/elements/Todolist.js";
+import Addtodo from "./elements/Addtodo.js";
+import Todolist from "./elements/Todolist.js";
 
 export default function App() {
   return (
