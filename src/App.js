@@ -1,11 +1,11 @@
 import "./styles.css";
-import Addtodo from "./elements/Addtodo.js";
+import AddTodo from "./elements/AddTodo.js";
 import Todolist from "./elements/Todolist.js";
 
 export default function App() {
   return (
     <div className="App">
-      <Addtodo />
+      <AddTodo />
       <Todolist />
     </div>
   );

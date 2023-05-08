@@ -1,14 +1,23 @@
-import React from "react";
-import { useState } from "react";
+import React, { useState } from "react";
+import AddTodo from "./AddTodo";
 
-function Todolist(){
-   
-    return(
-            <div>
-                <h1>Hello There</h1>
-            </div>
+function TodoList() {
+  const [todos, setTodos] = useState([]);
 
-    );
+  const addTodo = (newTodo) => {
+    setTodos([...todos, newTodo]);
+  };
+
+  return (
+    <div>
+      <AddTodo onAddTodo={addTodo} />
+      <ul>
+        {todos.map((todo, index) => (
+          <li key={index}>{todo}</li>
+        ))}
+      </ul>
+    </div>
+  );
 }
 
-export default Todolist;
+export default TodoList;
