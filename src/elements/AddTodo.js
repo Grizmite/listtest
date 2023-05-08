@@ -1,23 +1,40 @@
-import React, { useState } from "react";
+import { useState } from 'react';
 
-function AddTodo({ onAddTodo }) {
-  const [inputValue, setInputValue] = useState("");
+export default function AddTodo({ addTodo }) {
+  const [value, setValue] = useState('');
 
-  const handleChange = (event) => {
-    setInputValue(event.target.value);
-  };
+  function handleChange(e) {
+    const inputValue = e.target.value;
+    setValue(inputValue);
+  }
 
-  const handleClick = () => {
-    onAddTodo && onAddTodo(inputValue);
-    setInputValue("");
-  };
+  function handleKeyDown(e) {
+    if (e.key === 'Enter' && value.length) {
+      addTodo(value);
+      setValue('');
+    }
+  }
+
+  function handleClick() {
+    if (value.length) {
+      addTodo(value);
+      setValue('');
+    }
+  }
 
   return (
-    <div>
-      <input placeholder="Write something" value={inputValue} onChange={handleChange} />
-      <button onClick={handleClick}>Add</button>
+    <div className="d-flex justify-content-center align-items-center mb-20">
+      <input
+        type="text"
+        onChange={handleChange}
+        onKeyDown={handleKeyDown}
+        value={value}
+        className="mr-15 flex-fill"
+        placeholder="Ajouter une tâche"
+      />
+      <button onClick={handleClick} className="btn btn-primary">
+        Ajouter
+      </button>
     </div>
   );
 }
-
-export default AddTodo;
