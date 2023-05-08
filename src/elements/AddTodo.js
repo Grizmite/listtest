@@ -23,16 +23,15 @@ export default function AddTodo({ addTodo }) {
   }
 
   return (
-    <div className="d-flex justify-content-center align-items-center mb-20">
+    <div>
       <input
         type="text"
         onChange={handleChange}
         onKeyDown={handleKeyDown}
         value={value}
-        className="mr-15 flex-fill"
         placeholder="Ajouter une tâche"
       />
-      <button onClick={handleClick} className="btn btn-primary">
+      <button onClick={handleClick}>
         Ajouter
       </button>
     </div>
