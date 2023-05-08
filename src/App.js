@@ -1,10 +1,12 @@
 import "./styles.css";
+import Addtodo from "/src/elements/Addtodo.js";
+import Todolist from "/src/elements/Todolist.js";
 
 export default function App() {
   return (
     <div className="App">
-      <h1>Hello CodeSandbox</h1>
-      <h2>Start editing to see some magic happen!</h2>
+      <Addtodo />
+      <Todolist />
     </div>
   );
 }
